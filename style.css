@@ -1,77 +1,105 @@
 body {
-    margin: 0;
-    overflow: hidden; /* Voorkomt scrollen op mobiel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #87CEEB; /* Lichte blauwe luchtachtergrond */
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f8ff; /* Light blue background for a sky effect */
 }
 
 #game-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    max-width: 600px; /* Maximale breedte voor desktop */
-    max-height: 800px; /* Maximale hoogte voor desktop */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
+    position: relative;
+    border: 5px solid #32cd32; /* Lime green border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
 }
 
 #gameCanvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: #a8dadc; /* Achtergrondkleur voor het canvas */
+    display: block;
+    cursor: crosshair; /* Indicates an interactive tapping area */
+    background-color: #add8e6; /* Lighter blue for the canvas/sky */
 }
 
-/* Score en Levens Weergave */
 #score-board {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border-radius: 5px;
-    z-index: 10;
-    font-size: 1.2em;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 1.2em;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10; /* Make sure it's above the canvas */
 }
 
-/* Start- en Game Over Schermen */
+/* Common styles for overlays (start and game over screens) */
 #start-screen, #game-over-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 20;
 }
 
 .hidden {
-    display: none !important;
+    display: none !important;
 }
 
+h1 {
+    color: #ffd700; /* Gold color for the title */
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    color: #ff4500; /* Orange-red for Game Over */
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+
+/* Button Styling */
 button {
-    padding: 15px 30px;
-    font-size: 1.5em;
-    cursor: pointer;
-    margin-top: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: #457b9d;
-    color: white;
-    transition: background-color 0.3s;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-button:active {
-    background-color: #1d3557;
+#startButton {
+    background-color: #32cd32; /* Lime green */
+    color: white;
+}
+
+#startButton:hover {
+    background-color: #228b22; /* Darker green */
+}
+
+#restartButton {
+    background-color: #ff4500; /* Orange-red */
+    color: white;
+}
+
+#restartButton:hover {
+    background-color: #cc3700; /* Darker orange-red */
 }
