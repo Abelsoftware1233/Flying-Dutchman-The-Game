@@ -3,27 +3,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Gebruik viewport height om de game altijd in beeld te houden */
     min-height: 100vh; 
     margin: 0;
-    background-color: #f0f8ff;
-    padding: 10px; /* Een beetje padding voor kleine schermen */
+    background-color: #f0f8ff; /* Lichtblauwe achtergrond */
+    
+    /* Aangepast: minder padding om de game-container meer ruimte te geven */
+    padding: 0px; /* Geen padding meer op de body, laat de game-container de ruimte vullen */
     box-sizing: border-box;
 }
 
 #game-container {
     position: relative;
     
-    /* Belangrijkste aanpassing voor mobiel: */
-    width: 100%; /* Maakt het zo breed als de parent body (minus padding) */
-    max-width: 400px; /* Blijft elegant op grote schermen */
-    aspect-ratio: 4 / 6; /* Zorgt ervoor dat de hoogte altijd 1.5x de breedte is (400:600) */
+    /* Aangepast: Hogere max-width zodat het op grotere mobiele schermen groter kan worden */
+    /* Gebruik 95% van de viewport breedte om een kleine rand over te laten */
+    width: 95vw; /* Gebruikt 95% van de viewport breedte */
+    max-width: 600px; /* Maximale breedte op grotere schermen, bijv. tablets */
+    aspect-ratio: 4 / 6; /* Behoudt de hoogte-breedte verhouding */
 
     border: 5px solid #32cd32;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     overflow: hidden;
     background-color: #ffffff;
+    
+    /* Aangepast: Zorgt voor een kleine witte of transparante ruimte rondom het spel als max-width bereikt is */
+    margin: 10px; /* Een kleine marge rondom de container om de achtergrond licht te tonen */
 }
 
 #gameCanvas {
@@ -33,9 +38,6 @@ body {
     width: 100%; 
     height: 100%;
 }
-
-/* De rest van de CSS blijft hetzelfde omdat deze al position: absolute gebruikt
-   en dus correct meeschaalt met de grootte van de #game-container */
 
 #score-board {
     position: absolute;
