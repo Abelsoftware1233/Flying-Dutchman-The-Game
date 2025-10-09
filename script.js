@@ -28,7 +28,7 @@ let isPlaying = false;
 
 // Afbeeldingen laden (Zorg dat deze paden correct zijn!)
 const friendImage = new Image();
-friendImage.src = 'dutch.jpeg'; // De man-silhouette
+friendImage.src = 'pop.jpeg'; // De man-silhouette
 
 const bombImage = new Image();
 bombImage.src = 'bomb.jpg'; // De bom
