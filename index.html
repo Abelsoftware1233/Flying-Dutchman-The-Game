@@ -3,25 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flying Dutchman</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Goudkoorts Klikspel</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        #scoreboard {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        #game-container {
+            position: relative;
+            width: 400px; /* CANVAS_WIDTH uit JS */
+            height: 600px; /* CANVAS_HEIGHT uit JS */
+            border: 5px solid #333;
+            background-color: #a0d4ff; /* Lichte lucht achtergrond */
+        }
+
+        #gameCanvas {
+            display: block;
+            background-color: transparent; /* Zorgt dat canvas de container achtergrond toont */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Klassen die door de JS worden gebruikt */
+        .hidden { 
+            display: none !important; /* Verbergt overlays */
+        }
+        .start-hidden {
+            visibility: hidden; /* Verbergt de container voordat het spel start (zichtbaar maken door JS) */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border: none;
+            background-color: gold;
+            color: #333;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
-    <div id="game-container">
+
+    <div id="scoreboard">
+        Score: <span id="score">0</span> |
+        Levens: <span id="lives">30</span>
+    </div>
+
+    <div id="game-container" class="start-hidden"> 
+        
         <canvas id="gameCanvas"></canvas>
-        <div id="score-board">Score: <span id="score">0</span> | Levens: <span id="lives">30</span></div>
-        <div id="start-screen">
-            <h1>Flying Dutchman</h1>
-            <p>Tik op de goudstaaf om punten te scoren. Vermijd de bommen!</p>
-            <button id="startButton">Start Spel</button>
+
+        <div id="start-screen" class="overlay">
+            <h1>Goudkoorts Klikspel</h1>
+            <p>Klik op de vallende goudstaven! Mis ze niet en vermijd de bommen.</p>
+            <button id="startButton">Laden...</button>
         </div>
-        <div id="game-over-screen" class="hidden">
-            <h2>Game Over!</h2>
-            <p>Je score: <span id="final-score">0</span></p>
+        
+        <div id="game-over-screen" class="overlay hidden">
+            <h1>Game Over!</h1>
+            <p>Jouw eindscore:</p>
+            <p style="font-size: 2em; color: gold;"><span id="final-score">0</span></p>
             <button id="restartButton">Opnieuw Spelen</button>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script src="Script.js"></script>
+
 </body>
 </html>
