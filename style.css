@@ -49,17 +49,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Iets donkerder zodat de knop zichtbaar is */
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 20; /* Zorg dat het boven alles ligt */
+    z-index: 20;
 }
 
-/* BELANGRIJK: Zorg dat deze class echt alles verbergt! */
 .hidden {
     display: none !important;
 }
