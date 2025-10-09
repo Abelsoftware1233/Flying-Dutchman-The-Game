@@ -49,7 +49,7 @@ bombImage.src = 'bomb.jpg'; // De bom
 // Nieuwe power-up afbeelding (of gebruik kleur als fallback)
 const powerupImage = new Image();
 // Voor nu een placeholder, gebruik de fallback in de GameItem draw
-powerupImage.src = 'powerup.png';
+powerupImage.src = 'images.png';
 
 // Afbeeldingen laadstatus
 let assetsLoaded = false;
