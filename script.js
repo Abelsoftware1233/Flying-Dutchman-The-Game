@@ -20,7 +20,7 @@ const BOMB_CHANCE = 0.2;
 
 // Game State Variables
 let score = 0;
-let lives = 300;
+let lives = 30;
 let gameItems = [];
 let gameLoopInterval;
 let itemSpawnInterval;
@@ -181,7 +181,7 @@ function startGame() {
     }
     
     score = 0;
-    lives = 300;
+    lives = 30;
     gameItems = [];
     isPlaying = true;
 
