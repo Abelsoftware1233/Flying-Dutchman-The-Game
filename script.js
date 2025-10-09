@@ -153,3 +153,67 @@ function handleCanvasClick(event) {
                 // Optionele moeilijkheidsverhoging
                 if (score % 50 === 0) {
                     clearInterval(itemSpawnInterval);
+                    const newSpawnInterval = Math.max(500, SPAWN_INTERVAL_MS - (score / 10)); 
+                    itemSpawnInterval = setInterval(spawnItem, newSpawnInterval);
+                }
+
+            } else if (item.type === 'bomb') {
+                lives--;    
+            }
+
+            gameItems.splice(i, 1);
+            updateScoreboard();
+
+            if (lives <= 0) {
+                endGame();
+            }
+
+            return;
+        }
+    }
+}
+
+function startGame() {
+    if (!assetsLoaded) {
+        // Dit zou niet moeten gebeuren als de startknop disabled is, maar als vangnet.
+        alert("Wacht tot de spelonderdelen (afbeeldingen) geladen zijn.");
+        return;
+    }
+    
+    score = 0;
+    lives = 30;
+    gameItems = [];
+    isPlaying = true;
+
+    updateScoreboard();
+    // Verberg de overlays
+    startScreen.classList.add('hidden');
+    gameOverScreen.classList.add('hidden');
+    
+    // Zorg ervoor dat de canvas en het scoreboard zichtbaar zijn
+    document.getElementById('game-container').classList.remove('start-hidden'); 
+
+    // Reset en start intervallen
+    clearInterval(gameLoopInterval);
+    clearInterval(itemSpawnInterval);
+    gameLoopInterval = setInterval(gameLoop, 1000 / 60); 
+    itemSpawnInterval = setInterval(spawnItem, SPAWN_INTERVAL_MS); 
+}
+
+function endGame() {
+    isPlaying = false;
+    clearInterval(gameLoopInterval);
+    clearInterval(itemSpawnInterval);
+    
+    finalScoreDisplay.textContent = score;
+    gameOverScreen.classList.remove('hidden');
+}
+
+// Initialisatie
+startButton.textContent = 'Laden...';
+startButton.disabled = true;
+
+// --- Event Listeners ---
+startButton.addEventListener('click', startGame);
+restartButton.addEventListener('click', startGame);
+canvas.addEventListener('click', handleCanvasClick);
