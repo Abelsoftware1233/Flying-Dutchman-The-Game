@@ -181,7 +181,7 @@ function startGame() {
     }
     
     score = 0;
-    lives = 3;
+    lives = 300;
     gameItems = [];
     isPlaying = true;
 
