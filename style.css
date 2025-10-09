@@ -3,16 +3,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    /* Gebruik viewport height om de game altijd in beeld te houden */
+    min-height: 100vh; 
     margin: 0;
-    background-color: #f0f8ff; /* Light blue background for a sky effect */
+    background-color: #f0f8ff;
+    padding: 10px; /* Een beetje padding voor kleine schermen */
+    box-sizing: border-box;
 }
 
 #game-container {
     position: relative;
-    width: 400px; /* Vaste breedte instellen */
-    height: 600px; /* Vaste hoogte instellen */
-    border: 5px solid #32cd32; /* Lime green border */
+    
+    /* Belangrijkste aanpassing voor mobiel: */
+    width: 100%; /* Maakt het zo breed als de parent body (minus padding) */
+    max-width: 400px; /* Blijft elegant op grote schermen */
+    aspect-ratio: 4 / 6; /* Zorgt ervoor dat de hoogte altijd 1.5x de breedte is (400:600) */
+
+    border: 5px solid #32cd32;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     overflow: hidden;
@@ -22,10 +29,13 @@ body {
 #gameCanvas {
     display: block;
     cursor: crosshair; 
-    background-color: #add8e6; /* Lighter blue for the canvas/sky */
-    width: 100%; /* Zorg dat het de container vult */
+    background-color: #add8e6;
+    width: 100%; 
     height: 100%;
 }
+
+/* De rest van de CSS blijft hetzelfde omdat deze al position: absolute gebruikt
+   en dus correct meeschaalt met de grootte van de #game-container */
 
 #score-board {
     position: absolute;
@@ -42,7 +52,6 @@ body {
     z-index: 10; 
 }
 
-/* Common styles for overlays (start and game over screens) */
 #start-screen, #game-over-screen {
     position: absolute;
     top: 0;
@@ -64,12 +73,12 @@ body {
 }
 
 h1 {
-    color: #ffd700; /* Gold color for the title */
+    color: #ffd700; 
     margin-bottom: 0.5em;
 }
 
 h2 {
-    color: #ff4500; /* Orange-red for Game Over */
+    color: #ff4500; 
     margin-bottom: 0.5em;
 }
 
@@ -78,7 +87,6 @@ p {
     margin-bottom: 1.5em;
 }
 
-/* Button Styling */
 button {
     padding: 10px 20px;
     font-size: 1.2em;
@@ -91,12 +99,12 @@ button {
 }
 
 #startButton {
-    background-color: #32cd32; /* Lime green */
+    background-color: #32cd32; 
     color: white;
 }
 
 #startButton:hover:not(:disabled) {
-    background-color: #228b22; /* Darker green */
+    background-color: #228b22; 
 }
 
 #startButton:disabled {
@@ -105,10 +113,10 @@ button {
 }
 
 #restartButton {
-    background-color: #ff4500; /* Orange-red */
+    background-color: #ff4500; 
     color: white;
 }
 
 #restartButton:hover {
-    background-color: #cc3700; /* Darker orange-red */
+    background-color: #cc3700; 
 }
