@@ -27,8 +27,9 @@ let itemSpawnInterval;
 let isPlaying = false;
 
 // Afbeeldingen laden (Zorg dat deze paden correct zijn!)
+// Gebruik de geüploade afbeelding van de goudstaven (1000008887.jpg) voor de 'friend' items
 const friendImage = new Image();
-friendImage.src = 'pop.jpeg'; // De man-silhouette
+friendImage.src = '1000008887.jpg'; // De goudstaaf
 
 const bombImage = new Image();
 bombImage.src = 'bomb.jpg'; // De bom
